@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="8dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginBottom="4dp"
+
+    android:background="@color/background"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="1dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:orientation="horizontal"
+        android:paddingVertical="8dp">
+
+
+        <TextView
+            android:id="@+id/tvEventSearchCategory"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="16dp"
+            android:layout_weight="6"
+            android:fontFamily="@font/opensans_semibold"
+            android:gravity="center"
+            android:text="Announcements"
+            android:textAlignment="viewStart"
+            android:textColor="@color/fontgrey"
+            android:textSize="14sp"
+            tools:ignore="RtlCompat">
+
+        </TextView>
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:padding="8dp"
+            android:src="@drawable/ic_chevron_right_black_24dp">
+
+        </ImageView>
+
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

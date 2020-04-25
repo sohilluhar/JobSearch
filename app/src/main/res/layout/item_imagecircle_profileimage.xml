@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<com.mikhaellopez.circularimageview.CircularImageView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/pplprofileimg"
+    android:layout_width="@dimen/_25sdp"
+    android:layout_height="@dimen/_25sdp"
+    android:layout_marginLeft="@dimen/_1sdp"
+    android:src="@drawable/person_24dp"
+    app:civ_border_color="@android:color/darker_gray"
+    app:civ_border_width="1dp" />

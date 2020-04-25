@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.job">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".CompanyRegistration"></activity>
+        <activity android:name=".resume_deatails" />
+        <activity android:name=".resume_dashboard" />
+        <activity android:name=".activity_resume_others" />
+        <activity android:name=".activity_resume_personal" />
+        <activity android:name=".activity_resume_project" />
+        <activity android:name=".activity_resume_extracuricular" />
+        <activity android:name=".activity_resume_experiance" />
+        <activity android:name=".activity_user_resume" />
+        <activity android:name=".activity_resume_educational" />
+        <activity
+            android:name=".Test"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".SearchResult" />
+        <activity android:name=".Search" />
+        <activity android:name=".SponsorProfile" />
+        <activity android:name=".Sponsor_Dashboard" />
+        <activity android:name=".AddSponsorImage" />
+        <activity android:name=".SponsorList" />
+        <activity android:name=".SponsorDetails" />
+        <activity android:name=".SponserCategory" />
+        <activity android:name=".ViewEventQuestion" />
+        <activity android:name=".ViewSpeakersEvent" />
+        <activity android:name=".AskQuestion" />
+        <activity android:name=".ViewListofSpeaker" />
+        <activity android:name=".AddEventSpeaker" />
+        <activity android:name=".ViewEventSocialWall" />
+        <activity android:name=".AddSocialPhoto" />
+        <activity android:name=".ViewRequestedConnection" />
+        <activity android:name=".ViewConnection" />
+        <activity android:name=".ViewPendingConnection" />
+        <activity android:name=".Userviewpplgoingprofile" />
+        <activity android:name=".UserViewpplgoing" />
+        <activity android:name=".ViewAllEventAnnouncement" />
+        <activity android:name=".AddAnnoucement" />
+        <activity android:name=".CreateGroup" />
+        <activity android:name=".UserProfile" />
+        <activity android:name=".ViewListofPPlGoing" />
+        <activity android:name=".Organizer_ViewEventAll" />
+        <activity android:name=".UserGoingEvent" />
+        <activity android:name=".EventDetail" />
+        <activity android:name=".CreateEvent" />
+        <activity
+            android:name=".Main3Activity"
+            android:label="@string/title_activity_main3"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Main2Activity"
+            android:label="@string/title_activity_main2" />
+        <activity android:name=".Organizer_Dashboard" />
+        <activity android:name=".UserRegistration" />
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".VerifyPhoneActivity" />
+        <activity android:name=".UserDashboard" />
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.example.job.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@drawable/file_path" />
+        </provider>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+    </application>
+
+</manifest>
