@@ -4,12 +4,12 @@ import java.util.List;
 
 public class User1 {
 
-    String phonenumber, email, password, name, type, gender, dob, location;
+    String phonenumber, email, password, name, type, gender, dob, location, url;
 
     public User1() {
     }
 
-    public User1(String phonenumber, String email, String password, String name, String type, String gender, String dob, String location) {
+    public User1(String phonenumber, String email, String password, String name, String type, String gender, String dob, String location, String url) {
         this.phonenumber = phonenumber;
         this.email = email;
         this.password = password;
@@ -18,6 +18,15 @@ public class User1 {
         this.gender = gender;
         this.dob = dob;
         this.location = location;
+        this.url = url;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     public String getPhonenumber() {

@@ -22,6 +22,7 @@ import androidx.recyclerview.widget.SnapHelper;
 
 import com.example.job.Model.Job;
 import com.example.job.Model.User1;
+import com.example.job.Model.UserResume;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -45,7 +46,7 @@ public class UserDashboard extends AppCompatActivity {
 
 
     FirebaseDatabase firebaseDatabase;
-    DatabaseReference databaseReference, dbUserRef;
+    DatabaseReference databaseReference, dbUserRef, dbresumeref;
     TextView wlcMsg;
     MyAdapter adapter;
     List<Job> jobs;
@@ -105,6 +106,7 @@ public class UserDashboard extends AppCompatActivity {
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference("Job");
         dbUserRef = firebaseDatabase.getReference("users");
+        dbresumeref = firebaseDatabase.getReference("Resume");
 
         dbUserRef.child(Common.currentuser1.getPhonenumber()).addValueEventListener(new ValueEventListener() {
             @Override
@@ -119,6 +121,18 @@ public class UserDashboard extends AppCompatActivity {
 
 
                 editor.apply();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+        dbresumeref.child(Common.currentuser1.getPhonenumber()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Common.userresume = dataSnapshot.getValue(UserResume.class);
+
             }
 
             @Override
@@ -144,7 +158,13 @@ public class UserDashboard extends AppCompatActivity {
         findViewById(R.id.navigation_resume).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(UserDashboard.this, "Resume Click", Toast.LENGTH_SHORT).show();
+                if (Common.userresume.getStatus().equals("100")) {
+                    startActivity(new Intent(UserDashboard.this, ResumeComplete.class));
+
+                } else {
+                    Intent intent = new Intent(UserDashboard.this, Resume1.class);
+                    startActivity(intent);
+                }
             }
         });
         findViewById(R.id.navigation_upcomingEvent).setOnClickListener(new View.OnClickListener() {

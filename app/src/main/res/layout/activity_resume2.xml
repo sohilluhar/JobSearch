@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Resume2">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:text="Education Details"
+                android:textColor="@color/colorPrimary"
+                android:textSize="25dp"
+                android:textStyle="bold" />
+
+            <com.alespero.expandablecardview.ExpandableCardView
+                android:id="@+id/education1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_8sdp"
+                android:layout_marginVertical="@dimen/_4sdp"
+                app:animationDuration="300"
+                app:expandOnClick="true"
+                app:inner_view="@layout/education1"
+                app:startExpanded="false"
+                app:title="SSC  Details" />
+
+            <com.alespero.expandablecardview.ExpandableCardView
+                android:id="@+id/profile2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_8sdp"
+                android:layout_marginVertical="@dimen/_4sdp"
+                app:animationDuration="300"
+                app:expandOnClick="true"
+                app:inner_view="@layout/education2"
+                app:startExpanded="false"
+                app:title="HSC Details" />
+
+            <com.alespero.expandablecardview.ExpandableCardView
+                android:id="@+id/education4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_8sdp"
+                android:layout_marginVertical="@dimen/_4sdp"
+                app:animationDuration="300"
+                app:expandOnClick="true"
+                app:inner_view="@layout/education4"
+                app:startExpanded="false"
+                app:title="UG Details" />
+
+            <com.alespero.expandablecardview.ExpandableCardView
+                android:id="@+id/education3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_8sdp"
+                android:layout_marginVertical="@dimen/_4sdp"
+                android:layout_marginBottom="@dimen/_56sdp"
+                app:animationDuration="300"
+                app:expandOnClick="true"
+                app:inner_view="@layout/education3"
+                app:startExpanded="false"
+                app:title="PG Details" />
+
+
+            <Button
+                android:id="@+id/saveresume2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_8sdp"
+                android:layout_marginVertical="@dimen/_8sdp"
+                android:background="@drawable/round_btn_primary"
+                android:text="Save &amp; next"
+                android:textColor="@color/white" />
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

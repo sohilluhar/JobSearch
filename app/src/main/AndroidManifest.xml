@@ -14,7 +14,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CompanyRegistration"></activity>
+        <activity android:name=".ResumeComplete"></activity>
+        <activity android:name=".Resume4" />
+        <activity android:name=".Resume3" />
+        <activity android:name=".Resume2" />
+        <activity android:name=".Resume1" />
+        <activity android:name=".CompanyRegistration" />
         <activity android:name=".resume_deatails" />
         <activity android:name=".resume_dashboard" />
         <activity android:name=".activity_resume_others" />

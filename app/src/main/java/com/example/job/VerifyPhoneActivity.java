@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.job.Model.User1;
+import com.example.job.Model.UserResume;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.gms.tasks.TaskExecutors;
@@ -33,6 +34,7 @@ public class VerifyPhoneActivity extends AppCompatActivity {
 
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference dbUser = database.getReference("users");
+    DatabaseReference dbUserResumeref = database.getReference("Resume");
     String phonenumber, email, password, name, type, gender, dob, location;
     private String verificationId;
     private FirebaseAuth mAuth;
@@ -138,9 +140,11 @@ public class VerifyPhoneActivity extends AppCompatActivity {
                                     type,
                                     gender,
                                     dob,
-                                    location);
+                                    location, "");
+                            UserResume tmp1 = new UserResume(name, "", phonenumber, email, gender, dob, location, "0");
 
                             dbUser.child(phonenumber).setValue(tmp);
+                            dbUserResumeref.child(phonenumber).setValue(tmp1);
 
 
                             Toast.makeText(VerifyPhoneActivity.this, "Registration Done!", Toast.LENGTH_LONG).show();

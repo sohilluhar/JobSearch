@@ -6,6 +6,7 @@ import com.example.job.Model.Job;
 import com.example.job.Model.Sponser;
 import com.example.job.Model.User;
 import com.example.job.Model.User1;
+import com.example.job.Model.UserResume;
 import com.example.job.Model.resume;
 
 public class Common {
@@ -16,6 +17,6 @@ public class Common {
     public static EventGoing event_going;
     public static Sponser selectedSponsor;
     public static Sponser currentSponsor;
-    public static resume userresume;
+    public static UserResume userresume;
     public static Job selectedJob;
 }
