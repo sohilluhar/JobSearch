@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -56,43 +57,7 @@ public class UserDashboard extends AppCompatActivity {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             Fragment fragment;
-            switch (item.getItemId()) {
-                case R.id.navigation_home:
-//                    //     toolbar.setTitle("Shop");
-//                    Intent intent = new Intent(Home.this, ngo_home.class);
-//                    startActivity(intent);
-//
-//                    Toast.makeText(Home.this, "Home Click", Toast.LENGTH_SHORT).show();
-//                    return true;
-                case R.id.navigation_search:
-//                    Intent intent = new Intent(Home.this, User_Search_Event.class);
-//                    startActivity(intent);
-//                    finish();
-
-//                    Toast.makeText(ProfileActivity.this, "Search Click", Toast.LENGTH_SHORT).show();
-                    return true;
-                case R.id.navigation_upcomingEvent:
-//                    Intent intent1 = new Intent(UserDashboard.this, UserGoingEvent.class);
-//                    startActivity(intent1);
-//                    finish();
-                    return true;
-                case R.id.navigation_resume:
-
-                    Intent intent3 = new Intent(UserDashboard.this, resume_dashboard.class);
-                    startActivity(intent3);
-                    finish();
-                    return true;
-
-                case R.id.navigation_profile:
-
-                    Intent intent2 = new Intent(UserDashboard.this, UserProfile.class);
-                    startActivity(intent2);
-                    finish();
-                    return true;
-                default:
-                    return true;
-            }
-//            return true;
+            return true;
         }
     };
 
@@ -108,15 +73,12 @@ public class UserDashboard extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.action_bar_search) {
-//            Toast.makeText(this, "Search Click", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Search Click", Toast.LENGTH_SHORT).show();
 //            Intent intent2 = new Intent(UserDashboard.this, Search.class);
 //            startActivity(intent2);
         }
 
-        if (item.getItemId() == 76445) {
-            Intent intent = new Intent(UserDashboard.this, ViewSpeakersEvent.class);
-            startActivity(intent);
-        }
+
         if (item.getItemId() == R.id.action_bar_logout) {
             SharedPreferences preferences = getSharedPreferences("checkbox", MODE_PRIVATE);
             SharedPreferences.Editor editor = preferences.edit();
@@ -171,6 +133,32 @@ public class UserDashboard extends AppCompatActivity {
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
+
+        findViewById(R.id.navigation_home).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //  Toast.makeText(UserDashboard.this, "Search Click", Toast.LENGTH_SHORT).show();
+            }
+        });
+        findViewById(R.id.navigation_resume).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(UserDashboard.this, "Resume Click", Toast.LENGTH_SHORT).show();
+            }
+        });
+        findViewById(R.id.navigation_upcomingEvent).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(UserDashboard.this, "Applied job Click", Toast.LENGTH_SHORT).show();
+            }
+        });
+        findViewById(R.id.navigation_profile).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(UserDashboard.this, "Profile Click", Toast.LENGTH_SHORT).show();
+            }
+        });
 
 
         wlcMsg = (TextView) findViewById(R.id.wlcmsg);

@@ -175,6 +175,7 @@
                 android:scaleType="centerCrop">
 
             </ImageView>
+
             <TextView
                 android:id="@+id/entDetail_eventName"
                 android:layout_width="match_parent"
@@ -182,7 +183,7 @@
                 android:layout_marginHorizontal="8dp"
                 android:layout_marginTop="8dp"
                 android:fontFamily="@font/opensans_semibold"
-                android:text="Event Name"
+                android:text="Job Name"
                 android:textColor="@android:color/black"
                 android:textSize="24sp">
 

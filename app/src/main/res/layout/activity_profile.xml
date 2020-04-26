@@ -44,7 +44,9 @@
                     android:background="@drawable/round_btn_primary"
                     android:text="View Question"
                     android:textColor="@android:color/white"
-                    android:visibility="gone"></Button>
+                    android:visibility="gone">
+
+                </Button>
             </LinearLayout>
 
             <TextView
@@ -69,16 +71,6 @@
 
             </androidx.recyclerview.widget.RecyclerView>
 
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginRight="16dp"
-                android:fontFamily="@font/opensans_semibold"
-                android:text="Upcoming Events"
-                android:textSize="18sp" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/eventRecycler"

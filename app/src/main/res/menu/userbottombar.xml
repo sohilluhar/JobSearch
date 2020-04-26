@@ -12,14 +12,16 @@
         android:icon="@drawable/ic_search_24dp"
         android:title="Search" />
 
-    <item
-        android:id="@+id/navigation_upcomingEvent"
-        android:icon="@drawable/ic_userevent"
-        android:title="Your Jobs" />
   <item
         android:id="@+id/navigation_resume"
         android:icon="@drawable/ic_userevent"
         android:title="Resume" />
+
+    <item
+        android:id="@+id/navigation_upcomingEvent"
+        android:icon="@drawable/ic_notifications_active_black_24dp"
+        android:title="Applied Jobs" />
+
     <item
         android:id="@+id/navigation_profile"
         android:icon="@drawable/person_24dp"
