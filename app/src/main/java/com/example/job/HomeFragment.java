@@ -33,7 +33,6 @@ import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
-import com.example.job.Adapter.FeturedEventAdapter;
 import com.example.job.Adapter.MyAdapter;
 import com.example.job.Model.Event;
 
@@ -56,7 +55,6 @@ public class HomeFragment extends Fragment {
     DatabaseReference databaseReference, dbUserRef;
     TextView wlcMsg;
     MyAdapter adapter;
-    FeturedEventAdapter feturedEventAdapter;
     List<Event> events;
     Button btnViewquestion;
     RecyclerView recyclerView;
@@ -194,11 +192,6 @@ public class HomeFragment extends Fragment {
 
 //        recyclerView.setNestedScrollingEnabled(false);
 
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.HORIZONTAL, false));
-        SnapHelper snapHelper = new PagerSnapHelper();
-        snapHelper.attachToRecyclerView(recyclerView);
-        feturedEventAdapter = new FeturedEventAdapter(recyclerView, getActivity(), events);
-        recyclerView.setAdapter(feturedEventAdapter);
 
         // viewPager.setAdapter(adapter);
         //   viewPager.setPadding(130, 0, 130, 0);
@@ -263,12 +256,12 @@ public class HomeFragment extends Fragment {
 //        print(list);
 
         //SORT EVENTS DONE
-
-
-        recyclerView.setNestedScrollingEnabled(false);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        adapter = new MyAdapter(recyclerView, getActivity(), events);
-        recyclerView.setAdapter(adapter);
+//
+//
+//        recyclerView.setNestedScrollingEnabled(false);
+//        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+//        adapter = new MyAdapter(recyclerView, getActivity(), events);
+//        recyclerView.setAdapter(adapter);
     }
 
 }

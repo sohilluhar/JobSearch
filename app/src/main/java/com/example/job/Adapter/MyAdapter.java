@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -17,10 +18,10 @@ import com.bumptech.glide.Glide;
 import java.util.List;
 
 import com.example.job.Common;
-import com.example.job.EventDetail;
 import com.example.job.Interface.ILoadMore;
 import com.example.job.Interface.IRecyclerClickListener;
 import com.example.job.Model.Event;
+import com.example.job.Model.Job;
 import com.example.job.R;
 //import com.example.job.event_details;
 
@@ -40,11 +41,11 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     ILoadMore iLoadMore;
     boolean isLoading;
     Activity activity;
-    List<Event> items;
+    List<Job> items;
     int visibleThreshold = 4;
     int lastVisibleItem, totalItemCount;
 
-    public MyAdapter(RecyclerView recyclerView, Activity activity, List<Event> items) {
+    public MyAdapter(RecyclerView recyclerView, Activity activity, List<Job> items) {
         this.activity = activity;
         this.items = items;
 
@@ -96,29 +97,30 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         if (holder instanceof ItemViewHolder) {
 
-            final Event item = items.get(position);
+            final Job item = items.get(position);
             ItemViewHolder viewHolder = (ItemViewHolder) holder;
 
-            String date = items.get(position).getDate();
-            viewHolder.ngo_name.setText(items.get(position).getNgo_name());
-            viewHolder.event_name.setText(items.get(position).getEvent_name());
-            viewHolder.date.setText(date.substring(0, 7));
-            viewHolder.city.setText(items.get(position).getCity());
-            viewHolder.time.setText(items.get(position).getTime());
+            viewHolder.companyname.setText(item.getCompanyname());
+            viewHolder.jobname.setText(item.getName());
+            viewHolder.jobexp.setText(item.getWorkexperience());
+            viewHolder.joblocation.setText(item.getLocation());
+            viewHolder.jobskill.setText(item.getSkill());
+            viewHolder.jobtype.setText(item.getJobtype());
+
 
             ((ItemViewHolder) holder).setListener(new IRecyclerClickListener() {
                 @Override
                 public void onItemCliickListener(View view, int pos) {
-                    Common.selectedEvent = items.get(pos);
-                    Intent intent = new Intent(activity, EventDetail.class);
-                    activity.startActivity(intent);
+                    Common.selectedJob = items.get(pos);
+//                    Intent intent = new Intent(activity, EventDetail.class);
+//                    activity.startActivity(intent);
 
-//                    Toast.makeText(activity, "Click", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(activity, "Click", Toast.LENGTH_SHORT).show();
                 }
             });
 
 
-            Glide.with(activity).load(items.get(position).getImgurl()).centerCrop().into(viewHolder.imgevent);
+//            Glide.with(activity).load(items.get(position).getImgurl()).centerCrop().into(viewHolder.imgevent);
 
         } else if (holder instanceof LoadingEvent) {
             LoadingEvent loadEvent = (LoadingEvent) holder;

@@ -107,10 +107,10 @@ public class SearchResult extends AppCompatActivity {
 
         //SORT EVENTS DONE
 
-
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycleSearchResult);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new MyAdapter(recyclerView, this, events);
-        recyclerView.setAdapter(adapter);
+//
+//        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycleSearchResult);
+//        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+//        adapter = new MyAdapter(recyclerView, this, events);
+//        recyclerView.setAdapter(adapter);
     }
 }

@@ -23,6 +23,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.job.Model.Job;
+import com.example.job.Model.JobApply;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
@@ -48,145 +50,69 @@ import com.example.job.Model.EventGoing;
 
 public class CreateEvent extends AppCompatActivity {
     final int PICK_IMAGE_REQUEST = 71;
-    Button addEvent, back, datepickup, btnChoose;
-    EditText event_name;
-    EditText event_date;
-    EditText event_time;
-    EditText new_event_city;
-    EditText event_description, event_address, event_pincode, event_oragnizer, etTotalNumVol;
-    TextView tvVolNumber;
-    ImageView previewImg;
+
     Uri filePath;
-    Calendar c;
-    DatePickerDialog datePickerDialog;
     FirebaseStorage storage;
     StorageReference storageReference;
-    TimePickerDialog timePicker;
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference, ref1;
     String imgurl = " ";
-    Spinner catlistspin;
 
-    FirebaseDatabase database;
-    DatabaseReference dbcatref;
+
+    EditText newjobname, newjobdetails, newjoblocation, newjobsalary, newjobvacancy, newjobdesignation;
+    EditText newjobskill, newjobworkexperience, criteriahsc, criteriagraduate, criteriapostgraduate;
+    EditText newjobcompanyname, newjobcompanyabout, newjobcontactname, newjobcontactnumber;
+    Button newjobcompanyimage;
+    Spinner newjobtype;
+    ImageView previewImg;
+    Button addjob;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_event);
 
-        addEvent = (Button) findViewById(R.id.btnAddEvent);
-        btnChoose = (Button) findViewById(R.id.btnUploadEventImage);
-        previewImg = (ImageView) findViewById(R.id.ivEventImage);
+        newjobname = findViewById(R.id.newjobname);
+        newjobdetails = findViewById(R.id.newjobdetails);
+        newjoblocation = findViewById(R.id.newjoblocation);
+        newjobsalary = findViewById(R.id.newjobsalary);
+        newjobvacancy = findViewById(R.id.newjobvacancy);
+        newjobdesignation = findViewById(R.id.newjobdesignation);
+        newjobtype = findViewById(R.id.newjobtype);
+
+        newjobskill = findViewById(R.id.newjobskill);
+        newjobworkexperience = findViewById(R.id.newjobworkexperience);
+        criteriahsc = findViewById(R.id.criteriahsc);
+        criteriagraduate = findViewById(R.id.criteriagraduate);
+        criteriapostgraduate = findViewById(R.id.criteriapostgraduate);
+
+        newjobcompanyname = findViewById(R.id.newjobcompanyname);
+        newjobcompanyabout = findViewById(R.id.newjobcompanyabout);
+        newjobcontactname = findViewById(R.id.newjobcontactname);
+        newjobcontactnumber = findViewById(R.id.newjobcontactnumber);
+        newjobcompanyimage = findViewById(R.id.newjobcompanyimage);
+        previewImg = findViewById(R.id.newjobimgpreview);
 
 
-        event_name = (EditText) findViewById(R.id.new_event_name);
-        event_date = (EditText) findViewById(R.id.new_event_date);
-        event_time = (EditText) findViewById(R.id.new_event_time);
-        etTotalNumVol = (EditText) findViewById(R.id.new_event_limit);
-        tvVolNumber = (TextView) findViewById(R.id.tvnew_event_limit);
-
-        event_description = (EditText) findViewById(R.id.new_event_details);
-        event_address = (EditText) findViewById(R.id.new_event_address);
-        event_pincode = (EditText) findViewById(R.id.new_event_pincode);
-        new_event_city = (EditText) findViewById(R.id.new_event_city);
-
-        event_oragnizer = (EditText) findViewById(R.id.new_event_oragnizer);
-        catlistspin = findViewById(R.id.catlist);
-
-        findViewById(R.id.add_job).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(CreateEvent.this, "Job Add Click", Toast.LENGTH_SHORT).show();
-            }
-        });
+        addjob = (Button) findViewById(R.id.btncreatejob);
+        newjobcompanyimage = (Button) findViewById(R.id.newjobcompanyimage);
 
 
-        event_date.setFocusable(false);
-        event_date.setClickable(true);
-
-
-        event_time.setFocusable(false);
-        event_time.setClickable(true);
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
 
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference("Job");
         ref1 = firebaseDatabase.getReference("JobApply");
-        btnChoose.setOnClickListener(new View.OnClickListener() {
+        newjobcompanyimage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 chooseImage();
             }
         });
 
-        event_date.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                c = Calendar.getInstance();
-                int day = c.get(Calendar.DAY_OF_MONTH);
-                int month = c.get(Calendar.MONTH);
-                int year = c.get(Calendar.YEAR);
 
-                Log.e("DAte", "test");
-
-                datePickerDialog = new DatePickerDialog(CreateEvent.this, new DatePickerDialog.OnDateSetListener() {
-                    @Override
-                    public void onDateSet(DatePicker view, int myear, int mmonth, int mdayOfMonth) {
-
-                        String[] MONTH =
-                                {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
-
-                        Log.e("Month", mmonth + "");
-
-                        String tmpday = mdayOfMonth + "";
-
-
-                        event_date.setText(tmpday + " " + MONTH[mmonth] + " " + myear);
-                    }
-                }, year, month, day);
-
-                datePickerDialog.show();
-            }
-        });
-
-        event_time.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                c = Calendar.getInstance();
-                int hr = c.get(Calendar.HOUR);
-                int min = c.get(Calendar.MINUTE);
-
-                final String[] format = {""};
-
-                timePicker = new TimePickerDialog(CreateEvent.this, new TimePickerDialog.OnTimeSetListener() {
-                    @Override
-                    public void onTimeSet(TimePicker view, int hour, int minute) {
-
-                        if (hour == 0) {
-                            hour += 12;
-                            format[0] = "AM";
-                        } else if (hour == 12) {
-                            format[0] = "PM";
-                        } else if (hour > 12) {
-                            hour -= 12;
-                            format[0] = "PM";
-                        } else {
-                            format[0] = "AM";
-                        }
-
-                        event_time.setText(new StringBuilder().append(hour).append(" : ").append(minute)
-                                .append(" ").append(format[0]));
-                    }
-
-                }, hr, min, false);
-
-                timePicker.show();
-            }
-        });
-
-        addEvent.setOnClickListener(new View.OnClickListener() {
+        addjob.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (filePath != null) {
@@ -263,34 +189,47 @@ public class CreateEvent extends AppCompatActivity {
 
     private void addEventtoDB() {
 
-        final String eventnamestr = event_name.getText().toString();
-        final String eventdatestr = event_date.getText().toString();
-        final String eventtimestr = event_time.getText().toString();
+        final String strnewjobname = newjobname.getText().toString();
+        final String strnewjobdetails = newjobdetails.getText().toString();
+        final String strnewjoblocation = newjoblocation.getText().toString();
+        final String strnewjobsalary = newjobsalary.getText().toString();
+        final String strnewjobvacancy = newjobvacancy.getText().toString();
+        final String strnewjobdesignation = newjobdesignation.getText().toString();
+        final String strjobtype = newjobtype.getSelectedItem().toString();
 
-        final String ngo_namestr = Common.currentuser.getName().toString();
-        final String ngo_idstr = Common.currentuser.getUserphone();
-
-        final String eventdescriptionstr = event_description.getText().toString();
-        final String eventaddressstr = event_address.getText().toString();
-        final String eventpincodestr = event_pincode.getText().toString();
-        final String event_oragnizerstr = event_oragnizer.getText().toString();
-        final String event_limitstr = etTotalNumVol.getText().toString();
-        final String city = new_event_city.getText().toString();
-        final String catstr = catlistspin.getSelectedItem().toString();
-        final String imgurlf = imgurl;
-
-
-//                ,event_address,event_city,event_pincode;
+        final String strnewjobskill = newjobskill.getText().toString();
+        final String strnewjobworkexperience = newjobworkexperience.getText().toString();
+        final String strcriteriahsc = criteriahsc.getText().toString();
+        final String strcriteriagraduate = criteriagraduate.getText().toString();
+        final String strcriteriapostgraduate = criteriapostgraduate.getText().toString();
+        final String strnewjobcompanyname = newjobcompanyname.getText().toString();
+        final String strnewjobcontactname = newjobcontactname.getText().toString();
+        final String strnewjobcontactnumber = newjobcontactnumber.getText().toString();
+        final String idstr = Common.currentuser1.getPhonenumber();
 
         final List<Annoucement> annoucemts = new ArrayList<>();
         annoucemts.add(new Annoucement("", "", "", ""));
 //        annoucemts.add(" ");
-        final List<String> photos = new ArrayList<>();
-        photos.add(" ");
-        final List<String> comments = new ArrayList<>();
-        comments.add(" ");
+        final List<JobApply> jobApplies = new ArrayList<>();
+        jobApplies.add(new JobApply("", ""));
 
-        if (eventnamestr.isEmpty() || eventdatestr.isEmpty() || eventtimestr.isEmpty() || eventdescriptionstr.isEmpty() || eventaddressstr.isEmpty() || eventpincodestr.isEmpty()) {
+        if (strnewjobname.isEmpty() ||
+                strnewjobdetails.isEmpty() ||
+                strnewjoblocation.isEmpty() ||
+                strnewjobsalary.isEmpty() ||
+                strnewjobvacancy.isEmpty() ||
+                strnewjobdesignation.isEmpty() ||
+                strjobtype.isEmpty() ||
+                strnewjobskill.isEmpty() ||
+                strnewjobworkexperience.isEmpty() ||
+                strcriteriahsc.isEmpty() ||
+                strcriteriagraduate.isEmpty() ||
+                strcriteriapostgraduate.isEmpty() ||
+                strnewjobcompanyname.isEmpty() ||
+                strnewjobcontactname.isEmpty() ||
+                strnewjobcontactnumber.isEmpty()
+
+        ) {
             Toast.makeText(CreateEvent.this, "Please fill all details ", Toast.LENGTH_SHORT).show();
         } else {
 
@@ -298,20 +237,32 @@ public class CreateEvent extends AppCompatActivity {
             List<String> tmp = new ArrayList<>();
             tmp.add(" ");
 
-            Event newenvent = new Event(
-                    eventaddressstr, eventdescriptionstr, city, eventpincodestr,
-                    eventnamestr, ngo_namestr, "", eventdatestr, eventtimestr, city,
-                    event_oragnizerstr, "", ngo_idstr, "NO", photos, annoucemts, comments,
-                    eventkey + "", event_limitstr, imgurlf, Common.currentuser.getEmail(), tmp, tmp, catstr
+            Job newjob = new Job(
+                    strnewjobname,
+                    strnewjobdetails,
+                    strnewjoblocation,
+                    strnewjobsalary,
+                    strnewjobvacancy,
+                    strnewjobdesignation,
+                    strjobtype,
+                    strnewjobskill,
+                    strnewjobworkexperience,
+                    strcriteriahsc,
+                    strcriteriagraduate,
+                    strcriteriapostgraduate,
+                    strnewjobcompanyname,
+                    strnewjobcontactname,
+                    strnewjobcontactnumber,
+                    idstr,
+                    imgurl
             );
 
 //                        UUID eventkey= UUID.randomUUID();
 
 
-            databaseReference.child(eventkey + "").setValue(newenvent);
+            databaseReference.child(eventkey + "").setValue(newjob);
 
-            ref1.child(eventkey + "").child("1").child("phone").child("123");
-            ref1.child(eventkey + "").child("1").child("status").child("pending");
+            ref1.child(eventkey + "").setValue(jobApplies);
 
 
             // databaseReference.child(eventkey + "").child("question").child("1").setValue(tmp);

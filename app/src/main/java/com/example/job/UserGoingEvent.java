@@ -64,14 +64,14 @@ public class UserGoingEvent extends AppCompatActivity {
                     finish();
 //
 //                    Toast.makeText(Home.this, "Home Click", Toast.LENGTH_SHORT).show();
-                   return true;
+                    return true;
                 case R.id.navigation_search:
 //                    Intent intent = new Intent(Home.this, User_Search_Event.class);
 //                    startActivity(intent);
 //                    finish();
 
 //                    Toast.makeText(Home.this, "Search Click", Toast.LENGTH_SHORT).show();
-                   return true;
+                    return true;
                 case R.id.navigation_upcomingEvent:
 //                    Intent intent1 = new Intent(Home.this, User_Upcoming_Event.class);
 //                    startActivity(intent1);
@@ -83,7 +83,7 @@ public class UserGoingEvent extends AppCompatActivity {
                     Intent intent3 = new Intent(UserGoingEvent.this, resume_dashboard.class);
                     startActivity(intent3);
                     finish();
-                   return true;
+                    return true;
 
 
                 case R.id.navigation_profile:
@@ -91,7 +91,7 @@ public class UserGoingEvent extends AppCompatActivity {
                     Intent intent2 = new Intent(UserGoingEvent.this, UserProfile.class);
                     startActivity(intent2);
                     finish();
-                   return true;
+                    return true;
             }
             return true;
         }
@@ -169,11 +169,11 @@ public class UserGoingEvent extends AppCompatActivity {
 
         //SORT EVENTS DONE
 
-
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.eventRecycler);
-
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new MyAdapter(recyclerView, this, events);
-        recyclerView.setAdapter(adapter);
+//
+//        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.eventRecycler);
+//
+//        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+//        adapter = new MyAdapter(recyclerView, this, events);
+//        recyclerView.setAdapter(adapter);
     }
 }

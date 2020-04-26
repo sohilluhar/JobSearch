@@ -44,6 +44,7 @@ import com.example.job.Adapter.PeopleGoingCirImageView;
 import com.example.job.Model.Event;
 import com.example.job.Model.EventGoing;
 import com.example.job.Model.User;
+
 import ss.com.bannerslider.Slider;
 
 public class EventDetail extends AppCompatActivity {
@@ -103,6 +104,7 @@ public class EventDetail extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -494,11 +496,11 @@ public class EventDetail extends AppCompatActivity {
 
         //SORT EVENTS DONE
 
-
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.event_similar);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new MyAdapter(recyclerView, this, events);
-        recyclerView.setAdapter(adapter);
+//
+//        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.event_similar);
+//        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+//        adapter = new MyAdapter(recyclerView, this, events);
+//        recyclerView.setAdapter(adapter);
     }
 
 }

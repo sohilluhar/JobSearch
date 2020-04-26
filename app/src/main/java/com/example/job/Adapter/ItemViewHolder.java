@@ -13,24 +13,23 @@ import com.example.job.R;
 
 public class ItemViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-    public TextView event_name;
-    public TextView ngo_name;
-    public TextView date;
-    public TextView time;
-    public TextView city;
-    public Button btnVolList;
-    public ImageView imgevent;
+    public TextView companyname;
+    public TextView jobname;
+    public TextView jobexp;
+    public TextView joblocation;
+    public TextView jobskill;
+    public TextView jobtype;
+
     IRecyclerClickListener listener;
 
     public ItemViewHolder(@NonNull View itemView) {
         super(itemView);
-
-        event_name = (TextView) itemView.findViewById(R.id.event_name);
-        date = (TextView) itemView.findViewById(R.id.event_date);
-        ngo_name = (TextView) itemView.findViewById(R.id.ngo_name);
-        city = (TextView) itemView.findViewById(R.id.event_city);
-        time = (TextView) itemView.findViewById(R.id.event_time);
-        imgevent = itemView.findViewById(R.id.itemeventImage);
+        companyname = itemView.findViewById(R.id.itemcompanyname);
+        jobname = itemView.findViewById(R.id.itemjobname);
+        jobexp = itemView.findViewById(R.id.itemjobexperience);
+        joblocation = itemView.findViewById(R.id.itemjoblocation);
+        jobskill = itemView.findViewById(R.id.itemjobskill);
+        jobtype = itemView.findViewById(R.id.itemjobtype);
 //        btnVolList = (Button) itemView.findViewById(R.id.viewvolreq);
         itemView.setOnClickListener(this);
     }

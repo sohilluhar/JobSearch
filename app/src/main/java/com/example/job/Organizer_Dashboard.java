@@ -53,7 +53,7 @@ public class Organizer_Dashboard extends AppCompatActivity {
                 editor.remove("password");
                 editor.apply();
 
-                Common.currentuser = null;
+                Common.currentuser1 = null;
 
                 Intent intent = new Intent(Organizer_Dashboard.this, MainActivity.class);
                 startActivity(intent);

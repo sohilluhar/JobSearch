@@ -19,6 +19,8 @@ import androidx.recyclerview.widget.PagerSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.SnapHelper;
 
+import com.example.job.Model.Job;
+import com.example.job.Model.User1;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -27,41 +29,25 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.gson.Gson;
 
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
-import com.example.job.Adapter.FeturedEventAdapter;
 import com.example.job.Adapter.MyAdapter;
 import com.example.job.Model.Event;
-import com.example.job.Model.User;
 
 public class UserDashboard extends AppCompatActivity {
 //TODO:: add payment, add qr code,notification & mail
 
-    public Comparator<Event> dateNewOld = new Comparator<Event>() {
-        @Override
-        public int compare(Event o1, Event o2) {
-            DateFormat f = new SimpleDateFormat("dd MMM yyyy");
-            try {
-                return f.parse(o2.getDate()).compareTo(f.parse(o1.getDate()));
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
-            return 0;
-        }
-    };
+
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference, dbUserRef;
     TextView wlcMsg;
     MyAdapter adapter;
-    FeturedEventAdapter feturedEventAdapter;
-    List<Event> events;
+    List<Job> jobs;
     Button btnViewquestion;
     //ViewPager viewPager;
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -86,9 +72,9 @@ public class UserDashboard extends AppCompatActivity {
 //                    Toast.makeText(ProfileActivity.this, "Search Click", Toast.LENGTH_SHORT).show();
                     return true;
                 case R.id.navigation_upcomingEvent:
-                    Intent intent1 = new Intent(UserDashboard.this, UserGoingEvent.class);
-                    startActivity(intent1);
-                    finish();
+//                    Intent intent1 = new Intent(UserDashboard.this, UserGoingEvent.class);
+//                    startActivity(intent1);
+//                    finish();
                     return true;
                 case R.id.navigation_resume:
 
@@ -123,8 +109,8 @@ public class UserDashboard extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.action_bar_search) {
 //            Toast.makeText(this, "Search Click", Toast.LENGTH_SHORT).show();
-            Intent intent2 = new Intent(UserDashboard.this, Search.class);
-            startActivity(intent2);
+//            Intent intent2 = new Intent(UserDashboard.this, Search.class);
+//            startActivity(intent2);
         }
 
         if (item.getItemId() == 76445) {
@@ -139,7 +125,7 @@ public class UserDashboard extends AppCompatActivity {
             editor.remove("password");
             editor.apply();
 
-            Common.currentuser = null;
+            Common.currentuser1 = null;
 
             Intent intent = new Intent(UserDashboard.this, MainActivity.class);
             startActivity(intent);
@@ -155,13 +141,13 @@ public class UserDashboard extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         firebaseDatabase = FirebaseDatabase.getInstance();
-        databaseReference = firebaseDatabase.getReference("Events");
+        databaseReference = firebaseDatabase.getReference("Job");
         dbUserRef = firebaseDatabase.getReference("users");
 
-        dbUserRef.child(Common.currentuser.getUserphone()).addValueEventListener(new ValueEventListener() {
+        dbUserRef.child(Common.currentuser1.getPhonenumber()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                Common.currentuser = dataSnapshot.getValue(User.class);
+                Common.currentuser1 = dataSnapshot.getValue(User1.class);
 
                 SharedPreferences preferences = getSharedPreferences("checkbox", MODE_PRIVATE);
                 SharedPreferences.Editor editor = preferences.edit();
@@ -188,23 +174,9 @@ public class UserDashboard extends AppCompatActivity {
 
 
         wlcMsg = (TextView) findViewById(R.id.wlcmsg);
-        wlcMsg.setVisibility(View.GONE);
+        // wlcMsg.setVisibility(View.GONE);
         btnViewquestion = findViewById(R.id.btnViewquestion);
 
-
-        if (Common.currentuser.getType().equals("Sponsor")) {
-            navigation.setVisibility(View.GONE);
-            wlcMsg.setVisibility(View.GONE);
-        }
-//        try {
-//
-//            if (Common.currentuser.getExtraType().equals("Speaker")) {
-//                btnViewquestion.setVisibility(View.VISIBLE);
-//            }
-//
-//        } catch (Exception e) {
-//
-//        }
 
         btnViewquestion.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -214,44 +186,21 @@ public class UserDashboard extends AppCompatActivity {
             }
         });
 //load eventRecyclerFeatured
-        events = new ArrayList<>();
+        jobs = new ArrayList<>();
 
-        databaseReference.orderByChild("ngo_logo").equalTo("True").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
-
-                    Event event = dataSnapshot1.getValue(Event.class);
-                    events.add(event);
-                }
-
-                try {
-                    featuredEventLoad(events);
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                Log.e("Failed", databaseError.getMessage());
-
-            }
-        });
 
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                events = new ArrayList<>();
+                jobs = new ArrayList<>();
                 for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
 
-                    Event event = dataSnapshot1.getValue(Event.class);
-                    events.add(event);
+                    Job job = dataSnapshot1.getValue(Job.class);
+                    jobs.add(job);
                 }
 
                 try {
-                    onEventLoad(events);
+                    onEventLoad(jobs);
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
@@ -264,105 +213,21 @@ public class UserDashboard extends AppCompatActivity {
 
             }
         });
+        try {
+            wlcMsg.setText("Hey, " + Common.currentuser1.getName());
 
-
-        wlcMsg.setText("Hey, " + Common.currentuser.getName());
-    }
-
-    private void featuredEventLoad(List<Event> events) throws ParseException {
-
-
-        //SORT EVENT
-        Collections.sort(events, dateNewOld);
-
-
-        Collections.reverse(events);
-
-
-        // list.sort( dateNewOld );
-//Collections.reverse(list, dateNewOld);
-//        print(list);
-
-        //SORT EVENTS DONE
-
-
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.eventRecyclerFeatured);
-//        recyclerView.setNestedScrollingEnabled(false);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false));
-        SnapHelper snapHelper = new PagerSnapHelper();
-        snapHelper.attachToRecyclerView(recyclerView);
-        feturedEventAdapter = new FeturedEventAdapter(recyclerView, this, events);
-        recyclerView.setAdapter(feturedEventAdapter);
-
-        // viewPager.setAdapter(adapter);
-        //   viewPager.setPadding(130, 0, 130, 0);
-//        //   viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-//        @Override
-//        public void onPageScrolled ( int position, float positionOffset, int positionOffsetPixels){
-//
-//            if (position < (adapter.getCount() - 1) && position < (colors.length - 1)) {
-//                viewPager.setBackgroundColor(
-//
-//                        (Integer) argbEvaluator.evaluate(
-//                                positionOffset,
-//                                colors[position],
-//                                colors[position + 1]
-//                        )
-//                );
-//            } else {
-//                viewPager.setBackgroundColor(colors[colors.length - 1]);
-//            }
-//        }
-//
-//        @Override
-//        public void onPageSelected ( int position){
-//
-//        }
-//
-//        @Override
-//        public void onPageScrollStateChanged ( int state){
-//
-//        }
-//    });
-
-
-    }
-
-    private void onEventLoad(List<Event> events) throws ParseException {
-
-
-        //SORT EVENT
-        Collections.sort(events, dateNewOld);
-        Collections.reverse(events);
-
-
-        //remove past events
-
-        for (int i = 0; i < events.size(); i++) {
-
-            //long timestamp = new SimpleDateFormat("dd MMM yyyy").parse(new Date()).getTime();
-
-            SimpleDateFormat sdf = new SimpleDateFormat("dd MMM yyyy");
-            Date today = sdf.parse(sdf.format(new Date()));
-            long timestamp = today.getTime();
-            @SuppressLint("SimpleDateFormat")
-            Date dt = new SimpleDateFormat("dd MMM yyyy").parse(events.get(i).getDate());
-            long eventtimestamp = dt.getTime();
-            if (timestamp > eventtimestamp) {
-                events.remove(i);
-            }
+        } catch (Exception ignore) {
         }
-        // list.sort( dateNewOld );
-//Collections.reverse(list, dateNewOld);
-//        print(list);
+    }
 
-        //SORT EVENTS DONE
+
+    private void onEventLoad(List<Job> jobs) throws ParseException {
 
 
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.eventRecycler);
         recyclerView.setNestedScrollingEnabled(false);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new MyAdapter(recyclerView, this, events);
+        adapter = new MyAdapter(recyclerView, this, jobs);
         recyclerView.setAdapter(adapter);
     }
 }

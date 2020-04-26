@@ -78,26 +78,26 @@ public class activity_user_resume extends AppCompatActivity {
                     finish();
 //
 //                    Toast.makeText(Home.this, "Home Click", Toast.LENGTH_SHORT).show();
-                   return true;
+                    return true;
                 case R.id.navigation_search:
 //                    Intent intent = new Intent(Home.this, User_Search_Event.class);
 //                    startActivity(intent);
 //                    finish();
 
 //                    Toast.makeText(Home.this, "Search Click", Toast.LENGTH_SHORT).show();
-                   return true;
+                    return true;
                 case R.id.navigation_upcomingEvent:
-                   Intent intent1 = new Intent(activity_user_resume.this, UserGoingEvent.class);
+                    Intent intent1 = new Intent(activity_user_resume.this, UserGoingEvent.class);
                     startActivity(intent1);
                     finish();
                     return true;
 
                 case R.id.navigation_resume:
 
- //                   Intent intent3 = new Intent(activity_user_resume.this, activity_user_resume.class);
- //                   startActivity(intent3);
- //                   finish();
-                   return true;
+                    //                   Intent intent3 = new Intent(activity_user_resume.this, activity_user_resume.class);
+                    //                   startActivity(intent3);
+                    //                   finish();
+                    return true;
 
 
                 case R.id.navigation_profile:
@@ -110,8 +110,6 @@ public class activity_user_resume extends AppCompatActivity {
             return true;
         }
     };
-
-
 
 
     @Override
@@ -186,10 +184,10 @@ public class activity_user_resume extends AppCompatActivity {
         //SORT EVENTS DONE
 
 
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.eventRecycler);
-
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new MyAdapter(recyclerView, this, events);
-        recyclerView.setAdapter(adapter);
+//        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.eventRecycler);
+//
+//        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+//        adapter = new MyAdapter(recyclerView, this, events);
+//        recyclerView.setAdapter(adapter);
     }
 }

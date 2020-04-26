@@ -83,6 +83,7 @@ public class MainActivity extends AppCompatActivity {
 
         SharedPreferences preferences = getSharedPreferences("checkbox", MODE_PRIVATE);
         String ch = preferences.getString("remember", "");
+        ch = "false";
         // ch = "false";//TODO:: replace
         if (ch.equals("true")) {
             pb.setVisibility(View.VISIBLE);

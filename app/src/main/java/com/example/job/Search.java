@@ -203,7 +203,7 @@ public class Search extends AppCompatActivity {
 
             @Override
             protected void onBindViewHolder(@NonNull ItemViewHolder viewHolder, int position, @NonNull final Event model) {
-                viewHolder.event_name.setText(model.getEvent_name());
+//                viewHolder.event_name.setText(model.getEvent_name());
 
 
                 final Event local = model;
@@ -217,13 +217,13 @@ public class Search extends AppCompatActivity {
                     }
                 });
 
-                viewHolder.ngo_name.setText(model.getNgo_name());
-                viewHolder.event_name.setText(model.getEvent_name());
-                viewHolder.date.setText(model.getDate().substring(0, 7));
-                viewHolder.city.setText(model.getCity());
-                viewHolder.time.setText(model.getTime());
-
-                Glide.with(Search.this).load(model.getImgurl()).centerCrop().into(viewHolder.imgevent);
+//                viewHolder.ngo_name.setText(model.getNgo_name());
+//                viewHolder.event_name.setText(model.getEvent_name());
+//                viewHolder.date.setText(model.getDate().substring(0, 7));
+//                viewHolder.city.setText(model.getCity());
+//                viewHolder.time.setText(model.getTime());
+//
+//                Glide.with(Search.this).load(model.getImgurl()).centerCrop().into(viewHolder.imgevent);
 
             }
 
@@ -279,7 +279,7 @@ public class Search extends AppCompatActivity {
 
             @Override
             protected void onBindViewHolder(@NonNull ItemViewHolder viewHolder, int position, @NonNull final Event model) {
-                viewHolder.event_name.setText(model.getEvent_name());
+                // viewHolder.event_name.setText(model.getEvent_name());
 
 
                 final Event local = model;
@@ -292,14 +292,14 @@ public class Search extends AppCompatActivity {
                         startActivity(intent);
                     }
                 });
-
-                viewHolder.ngo_name.setText(model.getNgo_name());
-                viewHolder.event_name.setText(model.getEvent_name());
-                viewHolder.date.setText(model.getDate().substring(0, 7));
-                viewHolder.city.setText(model.getCity());
-                viewHolder.time.setText(model.getTime());
-
-                Glide.with(Search.this).load(model.getImgurl()).centerCrop().into(viewHolder.imgevent);
+//
+//                viewHolder.ngo_name.setText(model.getNgo_name());
+//                viewHolder.event_name.setText(model.getEvent_name());
+//                viewHolder.date.setText(model.getDate().substring(0, 7));
+//                viewHolder.city.setText(model.getCity());
+//                viewHolder.time.setText(model.getTime());
+//
+//                Glide.with(Search.this).load(model.getImgurl()).centerCrop().into(viewHolder.imgevent);
 
             }
 
