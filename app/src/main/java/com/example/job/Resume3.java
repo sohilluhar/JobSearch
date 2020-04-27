@@ -113,6 +113,14 @@ public class Resume3 extends AppCompatActivity {
         resumeexpdescription.setText(Common.userresume.getExpdescription());
         resumeexpstartdate.setText(Common.userresume.getExpstartdate());
         resumeexpenddate.setText(Common.userresume.getExpenddate());
+
+
+        findViewById(R.id.saveresume3).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                savetodb();
+            }
+        });
     }
 
     private void savetodb() {

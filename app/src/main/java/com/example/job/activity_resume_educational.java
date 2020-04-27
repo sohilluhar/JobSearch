@@ -123,9 +123,7 @@ public class activity_resume_educational extends AppCompatActivity {
         currentuserpersonalphone = findViewById(R.id.currentuserpersonalphone);
         currentuserpersonalemail = findViewById(R.id.currentuserpersonalemail);
         currentuserbussinessaddress = findViewById(R.id.currentuserbussinessaddress);
-        tvTotalconnection = findViewById(R.id.tvTotalconnection);
-        tvTotalConnectionRequest = findViewById(R.id.tvTotalConnectionRequest);
-        tvTotalconnectionPending = findViewById(R.id.tvTotalconnectionPending);
+
 //        Glide.with(this).load(Common.currentuser.getProfileurl())..into(viewHolder.imgevent);
      /*   try {
             if (!Common.currentuser.getProfileurl().equalsIgnoreCase(""))

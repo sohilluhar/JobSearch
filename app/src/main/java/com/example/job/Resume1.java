@@ -222,6 +222,7 @@ public class Resume1 extends AppCompatActivity {
         UserResume resume = Common.userresume;
         resume.setSkill(strskill);
         resume.setObjective(strobjective);
+        resume.setUrl(imgurl);
         dbresumeref.child(Common.currentuser1.getPhonenumber() + "").setValue(resume);
         Toast.makeText(this, "Personal Details Saved", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(Resume1.this, Resume2.class);

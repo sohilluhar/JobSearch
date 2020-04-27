@@ -20,6 +20,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import com.example.job.Model.User1;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -46,15 +47,18 @@ public class UserProfile extends AppCompatActivity {
     FirebaseStorage storage;
 
     FirebaseDatabase database = FirebaseDatabase.getInstance();
-    DatabaseReference dbUserRef = database.getReference("users/" + Common.currentuser.getUserphone());
+    DatabaseReference dbUserRef = database.getReference("users/" + Common.currentuser1.getPhonenumber());
     Button btnLogout, btnProfileUpdate;
     CircularImageView imguserprofile;
     EditText etusername, etcurrentuserabout, currentusergithub, currentuserlinkedin, currentuserbussinessaddress;
     EditText currentuserwork, currentuserbussinessemail, currentuserbussinessphone;
     TextView currentuserpersonalphone, currentuserpersonalemail, tvTotalconnection, tvTotalConnectionRequest, tvTotalconnectionPending;
     Uri filePath;
+    EditText etDOB, etlocation;
     StorageReference storageReference;
     String imgurl;
+    TextView userphone, useremail;
+
     boolean checkphoto = false;
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -62,41 +66,6 @@ public class UserProfile extends AppCompatActivity {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             Fragment fragment;
-            switch (item.getItemId()) {
-                case R.id.navigation_home:
-//                    //     toolbar.setTitle("Shop");
-                    Intent intent = new Intent(UserProfile.this, UserDashboard.class);
-                    startActivity(intent);
-                    finish();
-//
-//                    Toast.makeText(Home.this, "Home Click", Toast.LENGTH_SHORT).show();
-                    return true;
-                case R.id.navigation_search:
-//                    Intent intent = new Intent(Home.this, User_Search_Event.class);
-//                    startActivity(intent);
-//                    finish();
-
-//                    Toast.makeText(Home.this, "Search Click", Toast.LENGTH_SHORT).show();
-                    return true;
-                case R.id.navigation_upcomingEvent:
-                    Intent intent1 = new Intent(UserProfile.this, UserGoingEvent.class);
-                    startActivity(intent1);
-                    finish();
-                    return true;
-                case R.id.navigation_resume:
-                    Intent intent3= new Intent(UserProfile.this, resume_dashboard.class);
-                    startActivity(intent3);
-                    finish();
-                   return true;
-
-
-                case R.id.navigation_profile:
-
-//                    Intent intent2 = new Intent(UserGoingEvent.this, UserProfile.class);
-//                    startActivity(intent2);
-//                    finish();
-                    return true;
-            }
             return true;
         }
     };
@@ -112,33 +81,64 @@ public class UserProfile extends AppCompatActivity {
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         navigation.setSelectedItemId(R.id.navigation_profile);
 
+
+        findViewById(R.id.navigation_home).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(UserProfile.this, UserDashboard.class);
+                startActivity(intent);
+            }
+        });
+        findViewById(R.id.navigation_resume).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (Common.userresume.getStatus().equals("100")) {
+                    startActivity(new Intent(UserProfile.this, ResumeComplete.class));
+
+                } else {
+                    Intent intent = new Intent(UserProfile.this, Resume1.class);
+                    startActivity(intent);
+                }
+            }
+        });
+        findViewById(R.id.navigation_upcomingEvent).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(UserProfile.this, AppliedJobs.class);
+                startActivity(intent);
+            }
+        });
+        findViewById(R.id.navigation_profile).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Toast.makeText(UserProfile.this, "Profile Click", Toast.LENGTH_SHORT).show();
+            }
+        });
+
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
 
         btnLogout = findViewById(R.id.btnLogout);
         imguserprofile = findViewById(R.id.imguserprofile);
-        btnProfileUpdate = findViewById(R.id.btnUpdateUserProfile);
-        etusername = findViewById(R.id.currentusername);
-        etcurrentuserabout = findViewById(R.id.currentuserabout);
-        currentusergithub = findViewById(R.id.currentusergithub);
-        currentuserlinkedin = findViewById(R.id.currentuserlinkedin);
-        currentuserwork = findViewById(R.id.currentuserwork);
-        currentuserbussinessemail = findViewById(R.id.currentuserbussinessemail);
-        currentuserbussinessphone = findViewById(R.id.currentuserbussinessphone);
-        currentuserpersonalphone = findViewById(R.id.currentuserpersonalphone);
-        currentuserpersonalemail = findViewById(R.id.currentuserpersonalemail);
-        currentuserbussinessaddress = findViewById(R.id.currentuserbussinessaddress);
+        btnProfileUpdate = findViewById(R.id.btnupdate);
 
-        tvTotalconnection = findViewById(R.id.tvTotalconnection);
-        tvTotalConnectionRequest = findViewById(R.id.tvTotalConnectionRequest);
-        tvTotalconnectionPending = findViewById(R.id.tvTotalconnectionPending);
+        etusername = findViewById(R.id.userfullname);
+        etDOB = findViewById(R.id.etDOB);
+        etlocation = findViewById(R.id.etlocation);
+
+        userphone = findViewById(R.id.userphone);
+        useremail = findViewById(R.id.useremail);
+
 
 //        Glide.with(this).load(Common.currentuser.getProfileurl())..into(viewHolder.imgevent);
-try {
+        try {
 
-    if (!Common.currentuser.getProfileurl().equalsIgnoreCase(""))
-        Picasso.get().load(Common.currentuser.getProfileurl()).into(imguserprofile);
-}catch (Exception e){}
+            if (!Common.currentuser1.getUrl().equalsIgnoreCase(""))
+                Picasso.get().load(Common.currentuser1.getUrl()).into(imguserprofile);
+        } catch (Exception e) {
+        }
+
         imguserprofile.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -151,50 +151,15 @@ try {
             }
         });
 
-        imgurl = Common.currentuser.getProfileurl();
-        tvTotalconnection.setText(String.format("%d", Common.currentuser.getConnection().size() - 1));
-        tvTotalConnectionRequest.setText(String.format("%d", Common.currentuser.getRequestedconnection().size() - 1));
-        tvTotalconnectionPending.setText(String.format("%d", Common.currentuser.getPendingconnection().size() - 1));
+        imgurl = Common.currentuser1.getUrl();
 
 
-        etusername.setText(Common.currentuser.getName());
-        etcurrentuserabout.setText(Common.currentuser.getAbout());
-        currentusergithub.setText(Common.currentuser.getGithub());
-        currentuserlinkedin.setText(Common.currentuser.getLinkedin());
-        currentuserwork.setText(Common.currentuser.getWork());
-        currentuserbussinessemail.setText(Common.currentuser.getBussinessemail());
-        currentuserbussinessphone.setText(Common.currentuser.getBussinessphone());
-        currentuserbussinessaddress.setText(Common.currentuser.getBussinessaddress());
+        etusername.setText(Common.currentuser1.getName());
+        etDOB.setText(Common.currentuser1.getDob());
+        etlocation.setText(Common.currentuser1.getLocation());
+        userphone.setText(Common.currentuser1.getPhonenumber());
+        useremail.setText(Common.currentuser1.getEmail());
 
-        currentuserpersonalphone.setText(Common.currentuser.getUserphone());
-        currentuserpersonalemail.setText(Common.currentuser.getEmail());
-        tvTotalconnection.setMovementMethod(LinkMovementMethod.getInstance());
-        tvTotalconnection.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(UserProfile.this, ViewConnection.class);
-                startActivity(intent);
-
-            }
-        });
-        tvTotalConnectionRequest.setMovementMethod(LinkMovementMethod.getInstance());
-        tvTotalConnectionRequest.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(UserProfile.this, ViewRequestedConnection.class);
-                startActivity(intent);
-
-            }
-        });
-        tvTotalconnectionPending.setMovementMethod(LinkMovementMethod.getInstance());
-        tvTotalconnectionPending.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(UserProfile.this, ViewPendingConnection.class);
-                startActivity(intent);
-
-            }
-        });
 
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -206,7 +171,7 @@ try {
                 editor.remove("password");
                 editor.apply();
 
-                Common.currentuser = null;
+                Common.currentuser1 = null;
 
                 Intent intent = new Intent(UserProfile.this, MainActivity.class);
                 startActivity(intent);
@@ -221,8 +186,8 @@ try {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                        User currentuser = dataSnapshot.getValue(User.class);
-                        Common.currentuser = currentuser;
+                        User1 currentuser1 = dataSnapshot.getValue(User1.class);
+                        Common.currentuser1 = currentuser1;
 
                     }
 
@@ -253,7 +218,7 @@ try {
             progressDialog.setTitle("Uploading...");
             progressDialog.show();
 
-            final StorageReference ref = storageReference.child("userprofileimages/" + Common.currentuser.getUserphone());
+            final StorageReference ref = storageReference.child("userprofileimages/" + Common.currentuser1.getUrl());
             ref.putFile(filePath)
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
@@ -291,27 +256,16 @@ try {
     }
 
     private void updateuserprofile() {
-        User tmp = new User(
-                Common.currentuser.getEmail()
-                , etusername.getText().toString()
-                , Common.currentuser.getPass(),
-                "User",
-                Common.currentuser.getExtraType(),
-                currentuserpersonalphone.getText().toString(),
-                etcurrentuserabout.getText().toString(),
-                currentusergithub.getText().toString(),
-                currentuserlinkedin.getText().toString(),
-                currentuserwork.getText().toString(),
-                currentuserbussinessemail.getText().toString(),
-                currentuserbussinessphone.getText().toString(),
-                currentuserbussinessaddress.getText().toString(),
-                Common.currentuser.getGoingevent(),
-                Common.currentuser.getConnection(),
-                Common.currentuser.getPendingconnection(),
-                Common.currentuser.getRequestedconnection(),
-                imgurl
-        );
+
+        User1 tmp = Common.currentuser1;
+
+        tmp.setName(etusername.getText().toString());
+        tmp.setDob(etDOB.getText().toString());
+        tmp.setLocation(etlocation.getText().toString());
+        tmp.setUrl(imgurl);
+
         dbUserRef.setValue(tmp);
+
         SharedPreferences preferences = getSharedPreferences("checkbox", MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putString("remember", "true");

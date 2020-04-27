@@ -20,7 +20,7 @@
             <com.mikhaellopez.circularimageview.CircularImageView
                 android:id="@+id/imguserprofile"
                 android:layout_width="wrap_content"
-                android:layout_height="200dp"
+                android:layout_height="100dp"
                 android:layout_gravity="center"
                 android:layout_marginLeft="80dp"
                 android:layout_marginTop="16dp"
@@ -39,7 +39,7 @@
                 android:layout_marginRight="30dp"
                 android:text="Your Profile"
                 android:textAlignment="center"
-                android:textSize="30sp" />
+                android:textSize="@dimen/_12sdp" />
 
 
             <LinearLayout
@@ -48,7 +48,8 @@
                 android:layout_marginLeft="30dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginRight="30dp"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:visibility="gone">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -125,32 +126,49 @@
                 android:layout_marginLeft="30dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginRight="30dp"
-                android:text="Name" />
+                android:text="Full Name" />
 
             <EditText
-                android:id="@+id/currentusername"
+                android:id="@+id/userfullname"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="30dp"
                 android:ems="10" />
 
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginRight="30dp"
-                android:text="About" />
+                android:text="Gender" />
+
+            <!--           TODO:: handle this -->
+            <Spinner
+                android:id="@+id/gender"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:entries="@array/gender" />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="30dp"
+                android:text="Date of Birth" />
 
             <EditText
-                android:id="@+id/currentuserabout"
+                android:id="@+id/etDOB"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
-                android:layout_marginRight="30dp"
-                android:ems="10"
-                android:inputType="textMultiLine" />
+                android:layout_marginRight="30dp" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -158,113 +176,18 @@
                 android:layout_marginLeft="30dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginRight="30dp"
-                android:text="Github Link" />
+                android:text="Location" />
 
             <EditText
-                android:id="@+id/currentusergithub"
+                android:id="@+id/etlocation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
-                android:layout_marginRight="30dp"
-                android:ems="10" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginRight="30dp"
-                android:text="LinkedIn" />
-
-            <EditText
-                android:id="@+id/currentuserlinkedin"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:layout_marginRight="30dp"
-                android:ems="10" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginRight="30dp"
-                android:text="Bussiness Profile"
-                android:textAlignment="center"
-                android:textColor="@android:color/black"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginRight="30dp"
-                android:text="Work" />
-
-            <EditText
-                android:id="@+id/currentuserwork"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:layout_marginRight="30dp"
-                android:ems="10"
-                android:hint="Eg: Student,etc" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginRight="30dp"
-                android:text="Email" />
-
-            <EditText
-                android:id="@+id/currentuserbussinessemail"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:layout_marginRight="30dp"
-                android:ems="10" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginRight="30dp"
-                android:text="Phone Number" />
-
-            <EditText
-                android:id="@+id/currentuserbussinessphone"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:layout_marginRight="30dp"
-                android:ems="10" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginRight="30dp"
-                android:text="Address" />
-            <EditText
-                android:id="@+id/currentuserbussinessaddress"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:layout_marginRight="30dp"
-                android:ems="10"
-                android:inputType="textMultiLine" />
+                android:layout_marginRight="30dp" />
 
 
             <Button
-                android:id="@+id/btnUpdateUserProfile"
+                android:id="@+id/btnupdate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -287,16 +210,17 @@
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginRight="30dp"
-                android:text="Email" />
+                android:text="Phone" />
 
             <TextView
-                android:id="@+id/currentuserpersonalphone"
+                android:id="@+id/userphone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
@@ -313,7 +237,7 @@
                 android:text="Email" />
 
             <TextView
-                android:id="@+id/currentuserpersonalemail"
+                android:id="@+id/useremail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
@@ -357,8 +281,8 @@
             app:itemBackground="@color/colorPrimary"
             app:itemIconTint="@android:color/white"
             app:itemTextColor="@android:color/white"
-            app:menu="@menu/userbottombar"
-            app:labelVisibilityMode="labeled"/>
+            app:labelVisibilityMode="labeled"
+            app:menu="@menu/userbottombar" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

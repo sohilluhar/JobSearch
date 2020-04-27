@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import com.example.job.Adapter.MyAdapter;
 import com.example.job.Model.Job;
+import com.example.job.Model.User;
 import com.example.job.Model.User1;
 import com.example.job.Model.UserResume;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -60,6 +61,35 @@ public class AppliedJobs extends AppCompatActivity {
 
 
         return super.onCreateOptionsMenu(menu);
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == R.id.action_bar_search) {
+//            Toast.makeText(this, "Search Click", Toast.LENGTH_SHORT).show();
+            Intent intent2 = new Intent(AppliedJobs.this, Search.class);
+            startActivity(intent2);
+        }
+
+
+        if (item.getItemId() == R.id.action_bar_logout) {
+            SharedPreferences preferences = getSharedPreferences("checkbox", MODE_PRIVATE);
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.putString("remember", "false");
+            editor.remove("userphone");
+            editor.remove("password");
+            editor.apply();
+
+            Common.currentuser1 = null;
+
+            Intent intent = new Intent(AppliedJobs.this, MainActivity.class);
+            startActivity(intent);
+            finish();
+
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -109,7 +139,7 @@ public class AppliedJobs extends AppCompatActivity {
         findViewById(R.id.navigation_profile).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(AppliedJobs.this, "Profile Click", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(AppliedJobs.this, UserProfile.class));
             }
         });
 

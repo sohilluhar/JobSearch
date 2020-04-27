@@ -178,7 +178,8 @@ public class UserDashboard extends AppCompatActivity {
         findViewById(R.id.navigation_profile).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(UserDashboard.this, "Profile Click", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(UserDashboard.this, UserProfile.class);
+                startActivity(intent);
             }
         });
 
