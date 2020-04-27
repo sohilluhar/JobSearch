@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -105,6 +106,17 @@ public class JobDetail extends AppCompatActivity {
 
         jdcompanynumber = findViewById(R.id.jdcompanynumber);
         jdcompanynumber.setText(jb.getContactnumber());
+
+        jdcompanynumber.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent sendmsgtowhatsapp = new Intent(Intent.ACTION_VIEW);
+                //TODO:: Replace msg text
+                String msg = "Hey!";
+                sendmsgtowhatsapp.setData(Uri.parse("http://api.whatsapp.com/send?phone=" + jdcompanynumber.getText().toString() + "&text=" + msg));
+                startActivity(sendmsgtowhatsapp);
+            }
+        });
         jdcontactname = findViewById(R.id.jdcontactname);
         jdcontactname.setText(jb.getContactname());
         jbcpg = findViewById(R.id.jbcpg);
