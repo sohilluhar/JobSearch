@@ -61,6 +61,11 @@ public class ResumeComplete extends AppCompatActivity {
         } catch (Exception e) {
         }
 
+        if (Common.currentuser1.getType().equals("Company")) {
+            findViewById(R.id.editresume).setVisibility(View.GONE);
+
+        }
+
         compfullname.setText(Common.userresume.getFullname());
         compgender.setText(Common.userresume.getGender());
         compemail.setText(Common.userresume.getEmail());

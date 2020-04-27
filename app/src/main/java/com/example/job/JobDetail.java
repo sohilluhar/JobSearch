@@ -85,12 +85,21 @@ public class JobDetail extends AppCompatActivity {
         sss = findViewById(R.id.jobstatus);
         jdname.setText(jb.getName());
         ///////////////////////////////////
+        try {
 
-        if (Common.currentuser1.getJobapplied().contains(jb.getKey())) {
+            if (Common.currentuser1.getJobapplied().contains(jb.getKey())) {
+                findViewById(R.id.applyjob).setVisibility(View.GONE);
+                findViewById(R.id.alreadyapplied).setVisibility(View.VISIBLE);
+                getstatus();
+
+            }
+
+        } catch (Exception i) {
+        }
+        if (Common.currentuser1.getType().equals("Company")) {
             findViewById(R.id.applyjob).setVisibility(View.GONE);
-            findViewById(R.id.alreadyapplied).setVisibility(View.VISIBLE);
+            findViewById(R.id.viewapp).setVisibility(View.VISIBLE);
 
-            getstatus();
 
         }
 
@@ -134,7 +143,19 @@ public class JobDetail extends AppCompatActivity {
         findViewById(R.id.applyjob).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                applyforjob();
+
+                if (Common.userresume.getStatus().equals("100"))
+
+                    applyforjob();
+                else {
+                    Toast.makeText(JobDetail.this, "Resume Not Created!! Create resume first", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+        findViewById(R.id.viewlist).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(JobDetail.this, ViewListofPPlGoing.class));
             }
         });
 

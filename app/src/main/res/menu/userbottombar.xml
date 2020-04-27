@@ -25,6 +25,7 @@
     <item
         android:id="@+id/navigation_profile"
         android:icon="@drawable/person_24dp"
+        android:visible="false"
         android:title="Profile" />
 
 

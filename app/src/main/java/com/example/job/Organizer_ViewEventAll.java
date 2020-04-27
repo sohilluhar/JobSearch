@@ -8,6 +8,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.job.Adapter.MyAdapter;
+import com.example.job.Model.Job;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -26,34 +28,23 @@ import com.example.job.Adapter.Org_View_Eventadapter;
 import com.example.job.Model.Event;
 
 public class Organizer_ViewEventAll extends AppCompatActivity {
-    public Comparator<Event> dateNewOld = new Comparator<Event>() {
-        @Override
-        public int compare(Event o1, Event o2) {
-            DateFormat f = new SimpleDateFormat("dd MMM yyyy");
-            try {
-                return f.parse(o2.getDate()).compareTo(f.parse(o1.getDate()));
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
-            return 0;
-        }
-    };
+
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
     //TextView wlcMsg;
-    List<Event> events;
-    Org_View_Eventadapter adapter;
+    List<Job> events;
+    MyAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_organizer__view_event_all);
-        getSupportActionBar().setTitle("Event List");
+        getSupportActionBar().setTitle("Job List");
         events = new ArrayList<>();
         //  wlcMsg=(TextView)findViewById(R.id.wlcmsg);
 
         firebaseDatabase = FirebaseDatabase.getInstance();
-        databaseReference = firebaseDatabase.getReference("Events");
+        databaseReference = firebaseDatabase.getReference("Job");
 
 
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -61,10 +52,10 @@ public class Organizer_ViewEventAll extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                 for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
-                    Event event = dataSnapshot1.getValue(Event.class);
+                    Job job = dataSnapshot1.getValue(Job.class);
                     try {
-                        if (event.getNgo_id().equals(Common.currentuser.getUserphone()))
-                            events.add(event);
+                        if (job.getId().equals(Common.currentuser1.getPhonenumber()))
+                            events.add(job);
                     } catch (Exception e) {
                     }
                 }
@@ -81,55 +72,14 @@ public class Organizer_ViewEventAll extends AppCompatActivity {
         });
 
 
-        //     wlcMsg.setText("Hey, "+ Common.currentuser.getName());
-
-
-//        adapter.setiLoadMore(new ILoadMore() {
-//            @Override
-//            public void onLoadMore() {
-//                if(events.size()<=20){
-//                    events.add(null);
-//                    adapter.notifyItemInserted(events.size()-1);
-//                    new Handler().postDelayed(new Runnable() {
-//                        @Override
-//                        public void run() {
-//                            events.remove(events.size()-1);
-//                            adapter.notifyItemRemoved(events.size());
-//
-//                            int index=events.size();
-//                            int end=index+10;
-//
-//                            adapter.notifyDataSetChanged();
-//                            adapter.setLoaded();
-//
-//                        }
-//                    },5000);
-//                }
-//                else {
-//                    Toast.makeText(Home.this, "Data Loaded", Toast.LENGTH_SHORT).show();
-//                }
-//            }
-//        });
-
     }
 
-    private void onEventLoad(List<Event> events) {
+    private void onEventLoad(List<Job> events) {
 
-        //SORT EVENT
-        Collections.sort(events, dateNewOld);
-        Collections.reverse(events);
-        // list.sort( dateNewOld );
-//Collections.reverse(list, dateNewOld);
-//        print(list);
-
-        //SORT EVENTS DONE
-
-
-//        Log.e("Event",events.size()+"");
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.ngoeventRecycler);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new Org_View_Eventadapter(recyclerView, this, events);
+        adapter = new MyAdapter(recyclerView, this, events);
         recyclerView.setAdapter(adapter);
     }
 

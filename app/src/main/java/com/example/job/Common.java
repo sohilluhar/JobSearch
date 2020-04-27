@@ -19,4 +19,5 @@ public class Common {
     public static Sponser currentSponsor;
     public static UserResume userresume;
     public static Job selectedJob;
+    public static User1 viewresumeuser;
 }

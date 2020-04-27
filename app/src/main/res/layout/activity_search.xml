@@ -6,85 +6,119 @@
     tools:context=".Search">
 
 
-    <com.mancj.materialsearchbar.MaterialSearchBar
-        android:id="@+id/searchBar"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        app:mt_hint="Enter event name"
-        app:mt_speechMode="false" />
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_search"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/searchBar"
-        android:scrollbars="vertical" />
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardTodayEvent"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/recycler_search"
-        android:layout_margin="8dp"
-        android:background="@color/background"
-        app:cardCornerRadius="8dp"
-        app:cardElevation="1dp">
-
-        <LinearLayout
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycleCategory"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:orientation="horizontal"
-            android:paddingVertical="8dp">
+            android:scrollbars="vertical"
+            android:visibility="gone" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardTodayEvent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@color/background"
+            android:visibility="gone"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="1dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:orientation="horizontal"
+                android:paddingVertical="8dp">
 
 
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginStart="16dp"
-                android:layout_weight="6"
-                android:fontFamily="@font/opensans_semibold"
-                android:gravity="center"
-                android:text="Today Event"
-                android:textAlignment="viewStart"
-                android:textColor="@color/fontgrey"
-                android:textSize="14sp"
-                tools:ignore="RtlCompat">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="16dp"
+                    android:layout_weight="6"
+                    android:fontFamily="@font/opensans_semibold"
+                    android:gravity="center"
+                    android:text="Today Event"
+                    android:textAlignment="viewStart"
+                    android:textColor="@color/fontgrey"
+                    android:textSize="14sp"
+                    tools:ignore="RtlCompat">
 
-            </TextView>
+                </TextView>
 
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_weight="1"
-                android:padding="8dp"
-                android:src="@drawable/ic_chevron_right_black_24dp">
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:padding="8dp"
+                    android:src="@drawable/ic_chevron_right_black_24dp">
 
-            </ImageView>
+                </ImageView>
 
 
-        </LinearLayout>
+            </LinearLayout>
 
-    </androidx.cardview.widget.CardView>
+        </androidx.cardview.widget.CardView>
 
-    <TextView
-        android:id="@+id/tvcat"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/cardTodayEvent"
-        android:layout_margin="16dp"
-        android:text="Select Category">
 
-    </TextView>
+        <!--        <TextView-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_marginStart="16dp"-->
+        <!--            android:layout_marginTop="16dp"-->
+        <!--            android:layout_marginEnd="16dp"-->
+        <!--            android:text="Search Category">-->
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycleCategory"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tvcat"
+        <!--        </TextView>-->
 
-        android:scrollbars="vertical" />
+        <com.mancj.materialsearchbar.MaterialSearchBar
+            android:id="@+id/searchBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:mt_hint="Enter skill name"
+            app:mt_placeholder="Search by Skill"
+            app:mt_speechMode="false" />
+
+        <com.mancj.materialsearchbar.MaterialSearchBar
+            android:id="@+id/searchBar1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:mt_hint="Enter location"
+            app:mt_placeholder="Search by location"
+            app:mt_speechMode="false" />
+
+        <com.mancj.materialsearchbar.MaterialSearchBar
+            android:id="@+id/searchBar2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:mt_hint="Enter designation"
+            app:mt_placeholder="Search by designation"
+            app:mt_speechMode="false" />
+
+        <com.mancj.materialsearchbar.MaterialSearchBar
+            android:id="@+id/searchBar3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:mt_hint="Enter job type"
+            app:mt_placeholder="Search by job type"
+            app:mt_speechMode="false" />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="vertical" />
+
+    </LinearLayout>
 
 
 </RelativeLayout>

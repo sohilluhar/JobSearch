@@ -8,6 +8,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.job.Model.JobApply;
+import com.example.job.Model.User1;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -26,7 +28,7 @@ public class ViewListofPPlGoing extends AppCompatActivity {
     FirebaseDatabase firebaseDatabase;
     DatabaseReference everntgoing, dbUserRef;
     TextView wlcMsg;
-    List<User> users;
+    List<User1> users;
     ListofPplGoingAdapter adapter;
 
     @Override
@@ -35,19 +37,27 @@ public class ViewListofPPlGoing extends AppCompatActivity {
         setContentView(R.layout.activity_view_listof_p_pl_going);
         users = new ArrayList<>();
         //wlcMsg = (TextView) findViewById(R.id.wlcmsg);
-        final EventGoing[] eventGoingtmp = new EventGoing[1];
         firebaseDatabase = FirebaseDatabase.getInstance();
         dbUserRef = firebaseDatabase.getReference("users");
-        everntgoing = firebaseDatabase.getReference("EventGoing");
+        everntgoing = firebaseDatabase.getReference("JobApply");
 
-        everntgoing.child(Common.selectedEvent.getEvent_key()).addListenerForSingleValueEvent(new ValueEventListener() {
+        everntgoing.child(Common.selectedJob.getKey()).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                eventGoingtmp[0] = dataSnapshot.getValue(EventGoing.class);
+
+                List<String> jobApplies = new ArrayList<>();
+                for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
+
+//                    Log.e("ann",announcements.toString());
+                    JobApply tmp = dataSnapshot1.getValue(JobApply.class);
+                    assert tmp != null;
+                    jobApplies.add(tmp.getPhone());
+
+                }
 
 
-                for (int i = 0; i < eventGoingtmp[0].getGoingppl().size(); i++) {
-                    getUsers(eventGoingtmp[0].getGoingppl().get(i), i, eventGoingtmp[0].getGoingppl().size());
+                for (int i = 0; i < jobApplies.size(); i++) {
+                    getUsers(jobApplies.get(i), i, jobApplies.size());
                 }
 
             }
@@ -68,7 +78,7 @@ public class ViewListofPPlGoing extends AppCompatActivity {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         if (dataSnapshot.exists()) {
-                            User tmp = dataSnapshot.child(phone).getValue(User.class);
+                            User1 tmp = dataSnapshot.child(phone).getValue(User1.class);
                             users.add(tmp);
 
                             if (i == max - 1) {
@@ -85,7 +95,7 @@ public class ViewListofPPlGoing extends AppCompatActivity {
 
     }
 
-    private void onEventLoad(List<User> users) {
+    private void onEventLoad(List<User1> users) {
 
 
         //SORT EVENT

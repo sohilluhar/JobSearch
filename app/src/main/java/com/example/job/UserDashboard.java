@@ -74,9 +74,9 @@ public class UserDashboard extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.action_bar_search) {
-            Toast.makeText(this, "Search Click", Toast.LENGTH_SHORT).show();
-//            Intent intent2 = new Intent(UserDashboard.this, Search.class);
-//            startActivity(intent2);
+//            Toast.makeText(this, "Search Click", Toast.LENGTH_SHORT).show();
+            Intent intent2 = new Intent(UserDashboard.this, Search.class);
+            startActivity(intent2);
         }
 
 

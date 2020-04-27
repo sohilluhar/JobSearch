@@ -107,13 +107,6 @@ public class Resume3 extends AppCompatActivity {
             }
         });
 
-        findViewById(R.id.saveresume3).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                savetodb();
-            }
-        });
-
 
         resumeexpcompanyname.setText(Common.userresume.getExpcompanyname());
         resumeexpdesignation.setText(Common.userresume.getExpdesignation());
