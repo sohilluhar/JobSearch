@@ -4,6 +4,9 @@ public class JobApply {
     String phone;
     String status;
 
+    public JobApply() {
+    }
+
     public JobApply(String phone, String status) {
         this.phone = phone;
         this.status = status;

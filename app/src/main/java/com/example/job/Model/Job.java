@@ -2,6 +2,7 @@ package com.example.job.Model;
 
 public class Job {
 
+    String companyabout;
     private String name;
     private String details;
     private String location;
@@ -19,8 +20,13 @@ public class Job {
     private String contactnumber;
     private String id;
     private String img;
+    private String key;
 
-    public Job(String name, String details, String location, String salary, String vacancy, String designation, String jobtype, String skill, String workexperience, String criteriahsc, String criteriagraduate, String criteriapostgraduat, String companyname, String contactname, String contactnumber, String id, String img) {
+    public Job(String name, String details, String location, String salary, String vacancy, String designation, String jobtype, String skill, String workexperience, String criteriahsc, String criteriagraduate, String criteriapostgraduat, String companyname, String contactname, String contactnumber, String id, String img, String companyabout
+            , String key
+
+
+    ) {
         this.name = name;
         this.details = details;
         this.location = location;
@@ -38,9 +44,27 @@ public class Job {
         this.contactnumber = contactnumber;
         this.id = id;
         this.img = img;
+        this.companyabout = companyabout;
+        this.key = key;
     }
 
     public Job() {
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
+
+    public String getCompanyabout() {
+        return companyabout;
+    }
+
+    public void setCompanyabout(String companyabout) {
+        this.companyabout = companyabout;
     }
 
     public String getImg() {

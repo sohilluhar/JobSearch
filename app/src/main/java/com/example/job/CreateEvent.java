@@ -203,6 +203,7 @@ public class CreateEvent extends AppCompatActivity {
         final String strcriteriagraduate = criteriagraduate.getText().toString();
         final String strcriteriapostgraduate = criteriapostgraduate.getText().toString();
         final String strnewjobcompanyname = newjobcompanyname.getText().toString();
+        final String strnewjobcompanyabout = newjobcompanyabout.getText().toString();
         final String strnewjobcontactname = newjobcontactname.getText().toString();
         final String strnewjobcontactnumber = newjobcontactnumber.getText().toString();
         final String idstr = Common.currentuser1.getPhonenumber();
@@ -217,6 +218,7 @@ public class CreateEvent extends AppCompatActivity {
                 strnewjobdetails.isEmpty() ||
                 strnewjoblocation.isEmpty() ||
                 strnewjobsalary.isEmpty() ||
+                strnewjobcompanyabout.isEmpty() ||
                 strnewjobvacancy.isEmpty() ||
                 strnewjobdesignation.isEmpty() ||
                 strjobtype.isEmpty() ||
@@ -233,7 +235,7 @@ public class CreateEvent extends AppCompatActivity {
             Toast.makeText(CreateEvent.this, "Please fill all details ", Toast.LENGTH_SHORT).show();
         } else {
 
-            long eventkey = new Date().getTime();
+            long key = new Date().getTime();
             List<String> tmp = new ArrayList<>();
             tmp.add(" ");
 
@@ -254,15 +256,15 @@ public class CreateEvent extends AppCompatActivity {
                     strnewjobcontactname,
                     strnewjobcontactnumber,
                     idstr,
-                    imgurl
+                    imgurl, strnewjobcompanyabout, key + ""
             );
 
 //                        UUID eventkey= UUID.randomUUID();
 
 
-            databaseReference.child(eventkey + "").setValue(newjob);
+            databaseReference.child(key + "").setValue(newjob);
 
-            ref1.child(eventkey + "").setValue(jobApplies);
+            ref1.child(key + "").setValue(jobApplies);
 
 
             // databaseReference.child(eventkey + "").child("question").child("1").setValue(tmp);

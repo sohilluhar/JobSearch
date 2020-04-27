@@ -20,6 +20,7 @@ import java.util.List;
 import com.example.job.Common;
 import com.example.job.Interface.ILoadMore;
 import com.example.job.Interface.IRecyclerClickListener;
+import com.example.job.JobDetail;
 import com.example.job.Model.Event;
 import com.example.job.Model.Job;
 import com.example.job.R;
@@ -112,10 +113,10 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 @Override
                 public void onItemCliickListener(View view, int pos) {
                     Common.selectedJob = items.get(pos);
-//                    Intent intent = new Intent(activity, EventDetail.class);
-//                    activity.startActivity(intent);
+                    Intent intent = new Intent(activity, JobDetail.class);
+                    activity.startActivity(intent);
 
-                    Toast.makeText(activity, "Click", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(activity, "Click", Toast.LENGTH_SHORT).show();
                 }
             });
 

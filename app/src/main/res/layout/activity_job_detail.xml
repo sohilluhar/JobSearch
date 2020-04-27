@@ -1,0 +1,657 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".JobDetail">
+
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="50dp"
+        android:clipToPadding="false"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/jdPhoto"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:contentDescription="@null"
+                android:scaleType="centerCrop">
+
+            </ImageView>
+
+            <TextView
+                android:id="@+id/jdname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="8dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/opensans_semibold"
+                android:text="Job Name"
+                android:textColor="@android:color/black"
+                android:textSize="24sp">
+
+            </TextView>
+
+
+            <TextView
+                android:id="@+id/jdcompanyname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="8dp"
+                android:layout_marginBottom="@dimen/_8sdp"
+                android:text="Company Name"
+                android:textColor="@color/fontgrey"
+                android:textSize="16sp">
+
+            </TextView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/imageView3"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:padding="@dimen/_3sdp"
+                    android:src="@drawable/portfolio" />
+
+                <TextView
+                    android:id="@+id/itemjobexperience"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="@dimen/_2sdp"
+                    android:layout_marginStart="@dimen/_4sdp"
+                    android:layout_weight="7"
+                    android:fontFamily="@font/opensans_semibold"
+                    android:text="Job experience"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/fontgrey"
+                    android:textSize="@dimen/_14sdp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:src="@drawable/location" />
+
+                <TextView
+                    android:id="@+id/itemjoblocation"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="@dimen/_2sdp"
+                    android:layout_marginStart="@dimen/_4sdp"
+                    android:layout_weight="7"
+                    android:fontFamily="@font/opensans_semibold"
+                    android:text="Job Location"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/fontgrey"
+                    android:textSize="@dimen/_14sdp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:padding="@dimen/_3sdp"
+                    android:src="@drawable/document" />
+
+                <TextView
+                    android:id="@+id/itemjobskill"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="@dimen/_2sdp"
+                    android:layout_marginStart="@dimen/_4sdp"
+                    android:layout_weight="7"
+                    android:fontFamily="@font/opensans_semibold"
+                    android:text="Job Skill"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/fontgrey"
+                    android:textSize="@dimen/_14sdp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:padding="@dimen/_3sdp"
+                    android:src="@drawable/ic_attach_money_black_24dp" />
+
+                <TextView
+                    android:id="@+id/jdsalary"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="@dimen/_2sdp"
+                    android:layout_marginStart="@dimen/_4sdp"
+                    android:layout_weight="7"
+                    android:fontFamily="@font/opensans_semibold"
+                    android:text="Job Salary"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/fontgrey"
+                    android:textSize="@dimen/_14sdp" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/itemjobtype"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_4sdp"
+                android:layout_marginVertical="@dimen/_4sdp"
+                android:fontFamily="@font/opensans_semibold"
+                android:text="Job Type"
+                android:textAlignment="textStart"
+                android:textColor="@color/fontgrey"
+                android:textSize="@dimen/_14sdp" />
+
+            <TextView
+                android:id="@+id/itemjobdesignation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_4sdp"
+                android:layout_marginVertical="@dimen/_4sdp"
+                android:fontFamily="@font/opensans_semibold"
+                android:text="Job Designation"
+                android:textAlignment="textStart"
+                android:textColor="@color/fontgrey"
+                android:textSize="@dimen/_14sdp" />
+
+            <TextView
+                android:id="@+id/itemjobvac"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_4sdp"
+                android:layout_marginVertical="@dimen/_4sdp"
+                android:fontFamily="@font/opensans_semibold"
+                android:text="Job Vacancy"
+                android:textAlignment="textStart"
+                android:textColor="@color/fontgrey"
+                android:textSize="@dimen/_14sdp" />
+
+
+            <!--  Vertical          <LinearLayout-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_marginTop="10dp"-->
+            <!--                android:orientation="horizontal">-->
+
+            <!--                <ImageView-->
+            <!--                    android:id="@+id/evntmap"-->
+            <!--                    android:layout_width="0dp"-->
+            <!--                    android:layout_height="40dp"-->
+            <!--                    android:layout_marginLeft="15dp"-->
+            <!--                    android:layout_marginRight="15dp"-->
+            <!--                    android:layout_weight="1"-->
+            <!--                    android:src="@drawable/location">-->
+
+            <!--                </ImageView>-->
+
+            <!--                <LinearLayout-->
+            <!--                    android:layout_width="0dp"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:layout_weight="6"-->
+            <!--                    android:orientation="vertical">-->
+
+            <!--                    <TextView-->
+            <!--                        android:id="@+id/entDetail_eventAddress"-->
+            <!--                        android:layout_width="match_parent"-->
+            <!--                        android:layout_height="wrap_content"-->
+            <!--                        android:layout_weight="1"-->
+            <!--                        android:paddingBottom="10dp"-->
+            <!--                        android:text="Address"-->
+            <!--                        android:textColor="@android:color/black"-->
+            <!--                        android:textSize="12sp">-->
+
+            <!--                    </TextView>-->
+
+            <!--                    <TextView-->
+            <!--                        android:id="@+id/entDetail_eventCity"-->
+            <!--                        android:layout_width="match_parent"-->
+            <!--                        android:layout_height="wrap_content"-->
+            <!--                        android:layout_weight="1"-->
+            <!--                        android:text="City"-->
+
+            <!--                        android:textColor="@android:color/black"-->
+            <!--                        android:textSize="12sp">-->
+
+            <!--                    </TextView>-->
+
+            <!--                </LinearLayout>-->
+
+            <!--            </LinearLayout>-->
+
+            <!--            <LinearLayout-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_marginTop="10dp"-->
+            <!--                android:orientation="horizontal">-->
+
+            <!--                <ImageView-->
+            <!--                    android:layout_width="0dp"-->
+            <!--                    android:layout_height="40dp"-->
+            <!--                    android:layout_marginLeft="15dp"-->
+            <!--                    android:layout_marginRight="15dp"-->
+            <!--                    android:layout_weight="1"-->
+            <!--                    android:src="@drawable/person_24dp">-->
+
+            <!--                </ImageView>-->
+
+
+            <!--                <TextView-->
+            <!--                    android:id="@+id/entDetail_hostedby"-->
+            <!--                    android:layout_width="0dp"-->
+            <!--                    android:layout_height="60dp"-->
+            <!--                    android:layout_weight="6"-->
+            <!--                    android:text="Host Name"-->
+            <!--                    android:textColor="@android:color/black"-->
+            <!--                    android:textSize="12sp">-->
+
+            <!--                </TextView>-->
+
+            <!--            </LinearLayout>-->
+
+            <!--            <LinearLayout-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_marginTop="10dp"-->
+            <!--                android:orientation="horizontal">-->
+
+            <!--                <ImageView-->
+            <!--                    android:layout_width="0dp"-->
+            <!--                    android:layout_height="40dp"-->
+            <!--                    android:layout_marginLeft="15dp"-->
+            <!--                    android:layout_marginTop="16dp"-->
+            <!--                    android:layout_marginRight="15dp"-->
+            <!--                    android:layout_weight="1"-->
+            <!--                    android:src="@drawable/ic_question_answer_black_24dp">-->
+
+            <!--                </ImageView>-->
+
+            <!--                <LinearLayout-->
+            <!--                    android:layout_width="0dp"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:layout_weight="6"-->
+            <!--                    android:orientation="vertical">-->
+
+            <!--                    <TextView-->
+            <!--                        android:id="@+id/eventDetailCall"-->
+            <!--                        android:layout_width="match_parent"-->
+            <!--                        android:layout_height="wrap_content"-->
+            <!--                        android:layout_weight="1"-->
+            <!--                        android:paddingBottom="10dp"-->
+            <!--                        android:text="+918866775599"-->
+            <!--                        android:textColor="@android:color/black"-->
+            <!--                        android:textSize="12sp">-->
+
+            <!--                    </TextView>-->
+
+            <!--                    <TextView-->
+            <!--                        android:id="@+id/eventDetailMail"-->
+            <!--                        android:layout_width="match_parent"-->
+            <!--                        android:layout_height="wrap_content"-->
+            <!--                        android:layout_weight="1"-->
+            <!--                        android:text="me@gmail.com"-->
+            <!--                        android:textColor="@android:color/black"-->
+            <!--                        android:textSize="12sp">-->
+
+            <!--                    </TextView>-->
+
+            <!--                </LinearLayout>-->
+
+            <!--            </LinearLayout>-->
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="8dp"
+                android:layout_marginVertical="4dp"
+                android:fontFamily="@font/opensans_semibold"
+                android:text="Job Description"
+                android:textColor="@android:color/black"
+                android:textSize="18sp">
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/jddescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="8dp"
+                android:layout_marginVertical="4dp"
+                android:text="... description ..."
+                android:textColor="@android:color/black"
+                android:textSize="16sp">
+
+            </TextView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="8dp"
+                android:layout_marginVertical="4dp"
+                android:fontFamily="@font/opensans_semibold"
+                android:text="About Company"
+                android:textColor="@android:color/black"
+                android:textSize="18sp">
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/jdaboutcompany"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="8dp"
+                android:layout_marginVertical="4dp"
+                android:text="... description ..."
+                android:textColor="@android:color/black"
+                android:textSize="16sp">
+
+            </TextView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginHorizontal="@dimen/_4sdp"
+                android:layout_marginVertical="@dimen/_4sdp"
+                android:text="Criteria"
+                android:textAlignment="center"
+                android:textColor="@color/learn_black"
+                android:textSize="@dimen/_14sdp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_4sdp"
+                android:layout_marginVertical="@dimen/_4sdp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="HSC"
+                    android:textColor="@color/learn_black"
+                    android:textSize="@dimen/_14sdp" />
+
+                <TextView
+
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Under Graduate"
+                    android:textColor="@color/learn_black"
+                    android:textSize="@dimen/_14sdp" />
+
+                <TextView
+
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Post Graduate"
+                    android:textColor="@color/learn_black"
+                    android:textSize="@dimen/_14sdp" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_4sdp"
+                android:layout_marginVertical="@dimen/_4sdp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/jbchsc"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="HSC"
+                    android:textColor="@color/learn_black"
+                    android:textSize="@dimen/_14sdp" />
+
+                <TextView
+
+                    android:id="@+id/jbcug"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Under Graduate"
+                    android:textColor="@color/learn_black"
+                    android:textSize="@dimen/_14sdp" />
+
+                <TextView
+
+                    android:id="@+id/jbcpg"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Post Graduate"
+                    android:textColor="@color/learn_black"
+                    android:textSize="@dimen/_14sdp" />
+
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginHorizontal="@dimen/_4sdp"
+                android:layout_marginVertical="@dimen/_4sdp"
+                android:text="Contact"
+                android:textAlignment="center"
+                android:textColor="@color/learn_black"
+                android:textSize="@dimen/_14sdp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_4sdp"
+                android:layout_marginVertical="@dimen/_4sdp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Name"
+                    android:textColor="@color/learn_black"
+                    android:textSize="@dimen/_14sdp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Number"
+                    android:textColor="@color/learn_black"
+                    android:textSize="@dimen/_14sdp" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_4sdp"
+                android:layout_marginVertical="@dimen/_4sdp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/jdcontactname"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Name"
+                    android:textColor="@color/learn_black"
+                    android:textSize="@dimen/_14sdp"
+                    android:textStyle="bold" />
+
+                <TextView
+
+                    android:id="@+id/jdcompanynumber"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Under Graduate"
+                    android:textColor="@color/learn_black"
+                    android:textSize="@dimen/_14sdp" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/background"
+                android:orientation="vertical">
+
+
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/otherNGOName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:text=" "
+                android:textColor="@android:color/black"
+                android:textSize="14sp">
+
+            </TextView>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/event_similar"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_gravity="center"
+                android:layout_weight="1">
+
+            </androidx.recyclerview.widget.RecyclerView>
+
+
+        </LinearLayout>
+
+
+    </androidx.core.widget.NestedScrollView>
+
+    <androidx.cardview.widget.CardView
+
+        android:id="@+id/applyjob"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginHorizontal="8dp"
+        android:layout_marginVertical="4dp"
+        android:background="@color/colorPrimary"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="1dp">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:orientation="horizontal"
+            android:paddingVertical="8dp">
+
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="6"
+                android:fontFamily="@font/opensans_semibold"
+                android:gravity="center"
+                android:text="Apply for Job"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+
+                tools:ignore="RtlCompat">
+
+            </TextView>
+
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+
+        android:id="@+id/alreadyapplied"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginHorizontal="8dp"
+        android:layout_marginVertical="4dp"
+        android:background="@color/colorPrimary"
+        android:visibility="gone"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="1dp">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:orientation="horizontal"
+            android:paddingVertical="8dp">
+
+
+            <TextView
+                android:id="@+id/jobstatus"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="6"
+                android:fontFamily="@font/opensans_semibold"
+                android:gravity="center"
+                android:text="Apply for Job"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+
+                tools:ignore="RtlCompat">
+
+            </TextView>
+
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>

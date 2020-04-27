@@ -131,6 +131,9 @@ public class VerifyPhoneActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
 
+                            List<String> tmp12 = new ArrayList<>();
+                            tmp12.add("");
+
 
                             User1 tmp = new User1(
                                     phonenumber,
@@ -140,7 +143,7 @@ public class VerifyPhoneActivity extends AppCompatActivity {
                                     type,
                                     gender,
                                     dob,
-                                    location, "");
+                                    location, "", tmp12);
                             UserResume tmp1 = new UserResume(name, "", phonenumber, email, gender, dob, location, "0");
 
                             dbUser.child(phonenumber).setValue(tmp);

@@ -5,11 +5,12 @@ import java.util.List;
 public class User1 {
 
     String phonenumber, email, password, name, type, gender, dob, location, url;
+    List<String> jobapplied;
 
     public User1() {
     }
 
-    public User1(String phonenumber, String email, String password, String name, String type, String gender, String dob, String location, String url) {
+    public User1(String phonenumber, String email, String password, String name, String type, String gender, String dob, String location, String url, List<String> jobapplied) {
         this.phonenumber = phonenumber;
         this.email = email;
         this.password = password;
@@ -19,6 +20,15 @@ public class User1 {
         this.dob = dob;
         this.location = location;
         this.url = url;
+        this.jobapplied = jobapplied;
+    }
+
+    public List<String> getJobapplied() {
+        return jobapplied;
+    }
+
+    public void setJobapplied(List<String> jobapplied) {
+        this.jobapplied = jobapplied;
     }
 
     public String getUrl() {
